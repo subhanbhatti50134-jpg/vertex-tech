@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+    <defs>
+      <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#2BB3FF"/>
+        <stop offset="100%" stop-color="#081A2E"/>
+      </linearGradient>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    <rect width="800" height="600" fill="url(#grad)"/>
+    <g stroke="#2BB3FF" stroke-width="2" opacity="0.15">
+    <path d="M0 300 H100 V200 H300 V400 H700 V300"/>
+    <circle cx="100" cy="200" r="4" fill="#2BB3FF"/>
+    <circle cx="300" cy="400" r="4" fill="#2BB3FF"/>
+    <circle cx="700" cy="300" r="4" fill="#2BB3FF"/>
+  </g>
+    <g filter="url(#glow)">
+      <rect x="360" y="250" width="80" height="70" rx="10" fill="none" stroke="#ffffff" stroke-width="3"/><circle cx="400" cy="285" r="22" fill="#ffffff"/><circle cx="400" cy="285" r="8" fill="#ffffff" opacity="0.3"/><rect x="385" y="320" width="30" height="10" rx="5" fill="#ffffff" opacity="0.5"/>
+    </g>
+    <text x="400" y="432" font-family="Instrument Sans, Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.05em">STREAMCAM</text>
+    <text x="400" y="491.99999999999994" font-family="Instrument Sans, Arial, sans-serif" font-size="16" font-weight="500" fill="#ffffff" text-anchor="middle" opacity="0.7" letter-spacing="0.15em">Camera Stream • Live Viewing</text>
+  </svg>

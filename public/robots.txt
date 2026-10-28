@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vertextech.example/sitemap.xml
