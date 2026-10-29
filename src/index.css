@@ -734,10 +734,8 @@ img, svg { display: block; max-width: 100%; }
   bottom: 0;
   z-index: 30;
   height: 100svh;
-  visibility: hidden;
   pointer-events: none;
 }
-.mascot-layer > * { visibility: visible; }
 
 /* ------- badge ring (footer placement) ------- */
 .mascot-badge {
@@ -1054,7 +1052,8 @@ html.punching * { cursor: none; }
 }
 .hero__content {
   max-width: 100%;
-  z-index: 1;
+  position: relative;
+  z-index: 35;
 }
 .hero__tagline {
   display: block;
@@ -2116,4 +2115,78 @@ html.punching * { cursor: none; }
   .hero__title { font-size: clamp(2.75rem, 12vw, 5rem); }
   .hero__description { font-size: 1rem; }
   .project-card__content { padding: 1em 0 0; }
+}
+
+/* ------------------------------------------------- content above the mascot
+   The mascot canvas is a fixed z-30 overlay that draws the character over the
+   page (sebg-style). Readable content is raised above it so text always stays
+   legible while the character passes behind it; the opaque contact card also
+   rises above the speech bubble so the bubble never covers form labels.
+   #all-work is excluded so the badge ring still draws over its cards. */
+main > section:not(#all-work):not(#contact) > .container,
+footer > .container {
+  position: relative;
+  z-index: 35;
+}
+.contact__copy {
+  position: relative;
+  z-index: 35;
+}
+.contact__form {
+  position: relative;
+  z-index: 46;
+  background-color: var(--ink);
+}
+.contact__heading { margin-bottom: 0.3em; }
+
+/* Readability halo: content paints above the mascot, but dark glyphs on the
+   character's dark dither lose contrast. A halo in each section's own
+   background color is invisible on flat areas and parts the text from the
+   ink wherever the character passes behind it. */
+#about > .container,
+#services > .container {
+  text-shadow: 0 0 3px var(--bg), 0 0 8px var(--bg), 0 0 16px var(--bg);
+}
+#projects > .container,
+#all-work > .container {
+  text-shadow: 0 0 3px var(--stone-fill), 0 0 8px var(--stone-fill), 0 0 16px var(--stone-fill);
+}
+.cartoon > .container {
+  text-shadow: 0 0 3px var(--text), 0 0 8px var(--text), 0 0 16px var(--text);
+}
+#showcase > .container {
+  text-shadow: 0 0 3px var(--ink), 0 0 8px var(--ink), 0 0 16px var(--ink);
+}
+
+/* mascot HUD + float + top: same box as .mascot-layer so every transform the
+   module computes keeps its coordinates; only the stacking level differs. */
+.mascot-hud,
+.mascot-float,
+.mascot-top {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  height: 100svh;
+  pointer-events: none;
+}
+.mascot-hud { z-index: 38; }
+.mascot-float { z-index: 45; }
+.mascot-top { z-index: 50; }
+
+/* ------------------------------------------------- comfortable touch targets */
+@media (max-width: 767px) {
+  .skip-link { min-height: 44px; display: inline-flex; align-items: center; padding: 0 0.75rem; }
+  .nav-brand { min-height: 44px; display: inline-flex; align-items: center; }
+  .nav-theme-toggle { min-width: 44px; min-height: 44px; justify-content: center; }
+  .hero__contact { min-height: 44px; display: inline-flex; align-items: center; }
+  .hero__cta { min-height: 44px; }
+  .cartoon-btn { min-height: 44px; }
+  .contact__meta-value { min-height: 44px; display: flex; align-items: center; }
+  .contact__quick-action { min-height: 44px; }
+  .contact__field input,
+  .contact__field select,
+  .contact__field textarea { min-height: 44px; font-size: 16px; }
+  .footer__email { min-height: 44px; padding-block: 0.2em; }
+  .footer__social-link { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .footer__trick { min-height: 44px; padding: 0 0.5rem; display: inline-flex; align-items: center; }
 }

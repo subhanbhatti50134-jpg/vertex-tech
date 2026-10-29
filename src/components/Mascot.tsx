@@ -103,20 +103,33 @@ export default function Mascot() {
   }, [theme])
 
   return (
-    <div className="mascot-layer">
-      {/* ---------- badge ring (footer placement) ---------- */}
-      <div className="mascot-badge" aria-hidden="true">
-        <div />
+    <>
+      {/* ---------- layer: character canvas + badge ring (below page content) ---------- */}
+      <div className="mascot-layer">
+        {/* ---------- badge ring (footer placement) ---------- */}
+        <div className="mascot-badge" aria-hidden="true">
+          <div />
+        </div>
+
+        {/* ---------- the character ---------- */}
+        <canvas className="mascot" data-look={JSON.stringify(LOOK)} aria-hidden="true" />
       </div>
 
-      {/* ---------- the character ---------- */}
-      <canvas className="mascot" data-look={JSON.stringify(LOOK)} aria-hidden="true" />
+      {/* ---------- HUD: grab handle + hand cursor (above page content) ---------- */}
+      <div className="mascot-hud">
+        {/* ---------- grab handle ---------- */}
+        <div className="mascot-handle" aria-hidden="true" />
 
-      {/* ---------- grab handle ---------- */}
-      <div className="mascot-handle" aria-hidden="true" />
+        {/* ---------- pixel-art hand cursors ---------- */}
+        <div className="mascot-hand" hidden aria-hidden="true">
+          <HandSvg hand={HAND_OPEN} />
+          <HandSvg hand={HAND_POINT} className="hidden" />
+        </div>
+      </div>
 
-      {/* ---------- speech bubble ---------- */}
-      <div className="mascot-bubble">
+      {/* ---------- float: speech bubble (above text, below the contact card) ---------- */}
+      <div className="mascot-float">
+        <div className="mascot-bubble">
         <div className="mascot-bubble__body">
           <span className="mascot-bubble__tail mascot-bubble__tail--shadow" />
           <span className="mascot-bubble__tail" />
@@ -206,29 +219,26 @@ export default function Mascot() {
           </div>
         </div>
       </div>
-
-      {/* ---------- pixel-art hand cursors ---------- */}
-      <div className="mascot-hand" hidden aria-hidden="true">
-        <HandSvg hand={HAND_OPEN} />
-        <HandSvg hand={HAND_POINT} className="hidden" />
       </div>
 
-      {/* ---------- sound toggle ---------- */}
-      <button type="button" className="sound-toggle button" aria-label="Sound" aria-pressed="false">
-        <svg
-          className="sound-toggle__icon"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M1.5 6H4l3.5-3v10L4 10H1.5z" />
-          <path className="sound-toggle__off" d="m10.5 6 4 4m0-4-4 4" />
-          <path className="sound-toggle__on" d="M10 5.5a3.5 3.5 0 0 1 0 5M12 3a6.5 6.5 0 0 1 0 10" />
-        </svg>
-      </button>
-    </div>
+      {/* ---------- top: sound toggle (above everything) ---------- */}
+      <div className="mascot-top">
+        <button type="button" className="sound-toggle button" aria-label="Sound" aria-pressed="false">
+          <svg
+            className="sound-toggle__icon"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M1.5 6H4l3.5-3v10L4 10H1.5z" />
+            <path className="sound-toggle__off" d="m10.5 6 4 4m0-4-4 4" />
+            <path className="sound-toggle__on" d="M10 5.5a3.5 3.5 0 0 1 0 5M12 3a6 6 0 0 1 0 10" />
+          </svg>
+        </button>
+      </div>
+    </>
   )
 }
