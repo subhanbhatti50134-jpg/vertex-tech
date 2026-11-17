@@ -42,5 +42,5 @@ Push to GitHub and import in Vercel (framework: Vite). `vercel.json` sets securi
 ## Edit content
 - `src/lib/config.ts` contact details, socials (footer shows only socials you add)
 - `src/lib/data.ts` services, projects, process steps
-- Replace `https://vertextech.example` in `index.html`, `public/robots.txt`, `public/sitemap.xml` with your domain
+- Canonical URLs (`og:url`, JSON-LD, `robots.txt`, `sitemap.xml`) point at the live deployment `https://vertex-tech-rouge.vercel.app`; if you later get a custom domain, replace that URL in `index.html`, `public/robots.txt`, `public/sitemap.xml`
 - `public/privacy.html` and `public/terms.html` are placeholders
