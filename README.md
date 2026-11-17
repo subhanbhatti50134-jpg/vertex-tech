@@ -1,5 +1,7 @@
 # Vertex Tech website
 
+[![CI](https://github.com/subhanbhatti50134-jpg/vertex-tech/actions/workflows/ci.yml/badge.svg)](https://github.com/subhanbhatti50134-jpg/vertex-tech/actions/workflows/ci.yml)
+
 ![Vertex Tech logo](public/assets/vertex-tech-logo.png)
 
 React + TypeScript + Vite, Tailwind, React Three Fiber, GSAP, Framer Motion. Contact form posts to `api/contact.ts` (Vercel serverless function, sends via Resend).
